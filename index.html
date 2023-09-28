@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resource Material</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="Asssets\favicon.ico">
+    <link rel="icon" type="image.png" sizes="32x32" href="Asssets\favicon.ico">
+    <link rel="icon" type="image.png" sizes="16x16" href="Asssets\favicon.ico">
+</head>
+<body>
+    <h1>National Institute of Technology Prayagraj</h1>
+
+    <div id="container">
+        <form id="form" action="home.html" onsubmit="return validateForm()" method="POST">
+            <h2>Register</h2>
+            <hr>
+            <div id="name">
+            <label for="name">Name :</label>
+            <input type="text" id="name" placeholder="Enter your Name" required><b><span class="formError"></span></b>
+            </div>
+            <br>
+            <div id="registration">
+            <label for="registration">Registration No. :</label>
+            <input type="number" name="registration" placeholder="Enter Registration no" ><b><span class="formError"></span></b>
+            </div>
+            <br>
+            <label for="branch">Branch :</label>
+            <select>
+                <option id="">--Chemical Engineering--</option>
+            </select>
+            <br>
+            <br>
+            <label for="date">Date of Birth :</label>
+            <input type="date">
+            <br>
+            <br>
+            <div id="email">
+            <label for="email">Email Id :</label>
+            <input type="email" name="email" placeholder="Enter your Email Id"><b><span class="formError"></span></b>
+            </div>
+            <br>
+            <input type="submit" id="submit">
+        </form>
+    </div>
+
+    <div id="footer">
+        <p>@ 2023 Designed, Developed and Hosted by National Informatics Center NIC</p>
+    </div>
+    <script>
+        function clearErrors(){
+            errors=document.getElementsByClassName("formError");
+            for(let item of errors)
+            {
+                item.innerHTML="";
+            }
+        };
+
+        function setError(id,error){
+            element=document.getElementById(id);
+            element.getElementsByClassName("formError")[0].innerHTML=error;
+        };
+
+        function validateForm(){
+            var returnvalue=true;
+            clearErrors();
+            var name=document.forms["form"]["name"].value;
+            console.log(name);
+            if(name.length<5){
+                setError("name"," * length of the name is too short");
+                returnvalue=false;
+            }
+            if(name.length>20){
+                setError("name"," * length of the name is too long");
+                returnvalue=false;
+            }
+            var email=document.forms["form"]["email"].value;
+            console.log(email);
+            if(email.charAt(email.length-4)!="."){
+                setError("email"," * Email Id entered is not valid");
+                returnvalue=false;
+            }
+            var registration=document.forms["form"]["registration"].value;
+            console.log(registration);
+            if(registration.length!==8){
+                setError("registration"," * Enter a valid Registration No. ");
+                returnvalue=false;
+            }
+            var registration=document.forms["form"]["registration"].value;
+            console.log(registration);
+            if(registration.charAt(registration.length-7)!="0"){
+                setError("registration"," * Enter a valid Registration No.");
+                returnvalue=false;
+            }
+            var registration=document.forms["form"]["registration"].value;
+            console.log(registration);
+            if(registration.charAt(registration.length-8)!="2"){
+                setError("registration"," * Enter a valid Registration No.");
+                returnvalue=false;
+            }
+            return returnvalue;
+        };
+    </script>
+</body>
+</html>
